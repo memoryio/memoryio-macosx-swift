@@ -10,6 +10,7 @@
 		5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */; };
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
 		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
+		5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7191FD21B4400CA8BFE /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		5B9CE7091FD213E500CA8BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = memoryio.entitlements; sourceTree = "<group>"; };
 		5B9CE7141FD2186E00CA8BFE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5B9CE7191FD21B4400CA8BFE /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "../../../memoryio-macosx-swift/memoryio/Credits.rtf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
 				5B9CE7091FD213E500CA8BFE /* Info.plist */,
 				5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */,
+				5B9CE7191FD21B4400CA8BFE /* Credits.rtf */,
 			);
 			path = memoryio;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */,
+				5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
