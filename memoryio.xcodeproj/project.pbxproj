@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */; };
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
-		5B9CE7081FD213E500CA8BFE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7061FD213E500CA8BFE /* MainMenu.xib */; };
+		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B9CE6FF1FD213E500CA8BFE /* memoryio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9CE7041FD213E500CA8BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5B9CE7071FD213E500CA8BFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5B9CE7091FD213E500CA8BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = memoryio.entitlements; sourceTree = "<group>"; };
+		5B9CE7141FD2186E00CA8BFE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +51,9 @@
 		5B9CE7011FD213E500CA8BFE /* memoryio */ = {
 			isa = PBXGroup;
 			children = (
+				5B9CE7141FD2186E00CA8BFE /* main.swift */,
 				5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */,
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
-				5B9CE7061FD213E500CA8BFE /* MainMenu.xib */,
 				5B9CE7091FD213E500CA8BFE /* Info.plist */,
 				5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */,
 			);
@@ -120,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */,
-				5B9CE7081FD213E500CA8BFE /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,22 +130,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */,
 				5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		5B9CE7061FD213E500CA8BFE /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B9CE7071FD213E500CA8BFE /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5B9CE70B1FD213E500CA8BFE /* Debug */ = {
