@@ -11,7 +11,45 @@
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
 		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
 		5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7191FD21B4400CA8BFE /* Credits.rtf */; };
+		5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */; };
+		5B9CE71F1FD2242500CA8BFE /* GifPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71C1FD2242500CA8BFE /* GifPreferencesViewController.swift */; };
+		5B9CE7201FD2242500CA8BFE /* PhotoPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */; };
+		5B9CE7271FD2255B00CA8BFE /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */; };
+		5B9CE7281FD2255B00CA8BFE /* MASPreferences.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */; };
+		5B9CE7291FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */; };
+		5B9CE72D1FD225BF00CA8BFE /* MASPreferences.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */; };
+		5B9CE72E1FD225C000CA8BFE /* LaunchAtLogin.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */; };
+		5B9CE7301FD2272100CA8BFE /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */; };
+		5B9CE7311FD2272100CA8BFE /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5B9CE7341FD2272300CA8BFE /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5B9CE72C1FD2259F00CA8BFE /* Copy Carthage Symbols */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				5B9CE72D1FD225BF00CA8BFE /* MASPreferences.framework.dSYM in Copy Carthage Symbols */,
+				5B9CE72E1FD225C000CA8BFE /* LaunchAtLogin.framework.dSYM in Copy Carthage Symbols */,
+			);
+			name = "Copy Carthage Symbols";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5B9CE7321FD2272100CA8BFE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5B9CE7311FD2272100CA8BFE /* LaunchAtLogin.framework in Embed Frameworks */,
+				5B9CE7341FD2272300CA8BFE /* MASPreferences.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5B9CE6FF1FD213E500CA8BFE /* memoryio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -21,6 +59,13 @@
 		5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = memoryio.entitlements; sourceTree = "<group>"; };
 		5B9CE7141FD2186E00CA8BFE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5B9CE7191FD21B4400CA8BFE /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "../../../memoryio-macosx-swift/memoryio/Credits.rtf"; sourceTree = "<group>"; };
+		5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
+		5B9CE71C1FD2242500CA8BFE /* GifPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GifPreferencesViewController.swift; sourceTree = "<group>"; };
+		5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreferencesViewController.swift; sourceTree = "<group>"; };
+		5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = SOURCE_ROOT; };
+		5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = Carthage/Build/Mac/MASPreferences.framework; sourceTree = SOURCE_ROOT; };
+		5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MASPreferences.framework.dSYM; path = Carthage/Build/Mac/MASPreferences.framework.dSYM; sourceTree = SOURCE_ROOT; };
+		5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +73,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9CE7271FD2255B00CA8BFE /* MASPreferences.framework in Frameworks */,
+				5B9CE7301FD2272100CA8BFE /* LaunchAtLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +100,10 @@
 		5B9CE7011FD213E500CA8BFE /* memoryio */ = {
 			isa = PBXGroup;
 			children = (
+				5B9CE7211FD2254900CA8BFE /* Frameworks */,
+				5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */,
+				5B9CE71C1FD2242500CA8BFE /* GifPreferencesViewController.swift */,
+				5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */,
 				5B9CE7141FD2186E00CA8BFE /* main.swift */,
 				5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */,
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
@@ -61,6 +112,17 @@
 				5B9CE7191FD21B4400CA8BFE /* Credits.rtf */,
 			);
 			path = memoryio;
+			sourceTree = "<group>";
+		};
+		5B9CE7211FD2254900CA8BFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */,
+				5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */,
+				5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */,
+				5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -72,7 +134,11 @@
 			buildPhases = (
 				5B9CE6FB1FD213E500CA8BFE /* Sources */,
 				5B9CE6FC1FD213E500CA8BFE /* Frameworks */,
+				5B9CE72F1FD225CD00CA8BFE /* Carthage Update Check */,
 				5B9CE6FD1FD213E500CA8BFE /* Resources */,
+				5B9CE72C1FD2259F00CA8BFE /* Copy Carthage Symbols */,
+				5B9CE7321FD2272100CA8BFE /* Embed Frameworks */,
+				5B9CE72B1FD2258700CA8BFE /* Launch At Login script */,
 			);
 			buildRules = (
 			);
@@ -122,20 +188,56 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9CE7291FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM in Resources */,
 				5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */,
+				5B9CE7281FD2255B00CA8BFE /* MASPreferences.framework.dSYM in Resources */,
 				5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5B9CE72B1FD2258700CA8BFE /* Launch At Login script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Launch At Login script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh\n";
+		};
+		5B9CE72F1FD225CD00CA8BFE /* Carthage Update Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Carthage Update Check";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage outdated --xcode-warnings";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5B9CE6FB1FD213E500CA8BFE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9CE71F1FD2242500CA8BFE /* GifPreferencesViewController.swift in Sources */,
 				5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */,
+				5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */,
 				5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */,
+				5B9CE7201FD2242500CA8BFE /* PhotoPreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +358,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = memoryio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -274,6 +380,10 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = memoryio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import MASPreferences
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
 {
@@ -28,7 +29,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
     }
 
     var _previewWindow: NSWindow!
-
     var previewWindow: NSWindow {
         if _previewWindow == nil {
             let imageView = NSImageView()
@@ -53,6 +53,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
             _previewWindow.contentView = imageView
         }
         return _previewWindow
+    }
+
+    var _preferencesWindowController: NSWindowController!
+    var preferencesWindowController: NSWindowController {
+        if _preferencesWindowController == nil {
+            let general = GeneralPreferencesViewController()
+            let photo = PhotoPreferencesViewController()
+            let gif = GifPreferencesViewController()
+            let controllers = NSArray(objects: general, photo, gif)
+            let title = NSLocalizedString("Preferences", comment: "Common title for Preferences window")
+            _preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers as! [Any], title: title)
+        }
+        return _preferencesWindowController
     }
 
     lazy var applicationName:String = {
@@ -97,10 +110,36 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
         statusItem.menu = statusMenu
     }
 
+    func setNSUserDefaults() {
+        if !(UserDefaults.standard.object(forKey: "memoryio-mode") != nil) {
+            UserDefaults.standard.set(0, forKey: "memoryio-mode")
+        }
+        if !(UserDefaults.standard.string(forKey: "memoryio-location") != nil) {
+            let defaultPath = "\(NSHomeDirectory())\("/Pictures/memoryIO/")"
+            UserDefaults.standard.set(defaultPath, forKey: "memoryio-location")
+        }
+        if !(UserDefaults.standard.object(forKey: "memoryio-warmup-delay") != nil) {
+            UserDefaults.standard.set(2.0, forKey: "memoryio-warmup-delay")
+        }
+        if !(UserDefaults.standard.object(forKey: "memoryio-photo-delay") != nil) {
+            UserDefaults.standard.set(0.0, forKey: "memoryio-photo-delay")
+        }
+        if !(UserDefaults.standard.object(forKey: "memoryio-gif-frame-delay") != nil) {
+            UserDefaults.standard.set(0.20, forKey: "memoryio-gif-frame-delay")
+        }
+        if !(UserDefaults.standard.object(forKey: "memoryio-gif-frame-count") != nil) {
+            UserDefaults.standard.set(10, forKey: "memoryio-gif-frame-count")
+        }
+        if !(UserDefaults.standard.object(forKey: "memoryio-gif-loop-count") != nil) {
+            UserDefaults.standard.set(0, forKey: "memoryio-gif-loop-count")
+        }
+    }
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }
 
     func applicationWillFinishLaunching(_ notification:Notification) {
+        setNSUserDefaults() // before menu so it has defaults
         setupMenuBar()
     }
 
@@ -137,6 +176,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
     }
 
     @IBAction func preferencesAction(sender: AnyObject) {
+        self.preferencesWindowController.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
 }
 
