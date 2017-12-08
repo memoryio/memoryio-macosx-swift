@@ -9,9 +9,10 @@
 import Cocoa
 import MASPreferences
 
-class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
+class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
     var statusItem: NSStatusItem!
+
     var lastImage: NSImage {
         let path = UserDefaults.standard.string(forKey: "memoryio-location")
 
@@ -110,6 +111,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
         statusItem.menu = statusMenu
     }
 
+    func postNotification(informativeText: String, withActionBoolean hasActionButton: Bool) {
+        let notification = NSUserNotification()
+        notification.title = "memoryio"
+        notification.informativeText = informativeText
+        notification.hasActionButton = hasActionButton
+        NSUserNotificationCenter.default.scheduleNotification(notification)
+    }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, shouldPresent notification: NSUserNotification) -> Bool {
+        return true
+    }
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        center.removeDeliveredNotification(notification)
+        if(notification.activationType == .contentsClicked)
+        {
+            preview()
+        }
+    }
+
     func setNSUserDefaults() {
         if !(UserDefaults.standard.object(forKey: "memoryio-mode") != nil) {
             UserDefaults.standard.set(0, forKey: "memoryio-mode")
@@ -139,6 +160,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
     }
 
     func applicationWillFinishLaunching(_ notification:Notification) {
+        NSUserNotificationCenter.default.delegate = self
         setNSUserDefaults() // before menu so it has defaults
         setupMenuBar()
     }
@@ -146,38 +168,37 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate
     func applicationWillTerminate(_ aNotification: Notification) {
     }
 
-    @IBAction func quitAction(sender: AnyObject) {
+    @objc func quitAction() {
         NSApp.terminate(self)
     }
 
-    @IBAction func aboutAction(sender: AnyObject) {
+    @objc func aboutAction() {
         NSApplication.shared.orderFrontStandardAboutPanel(self)
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    @IBAction func forceAction(sender: AnyObject) {
+    @objc func forceAction() {
     }
 
-    @IBAction func forceActionGif(sender: AnyObject) {
+    @objc func forceActionGif() {
     }
 
-    @IBAction func preview(sender: AnyObject) {
+    @objc func preview() {
         let imageView = previewWindow.contentView as! NSImageView
         imageView.image = self.lastImage
         previewWindow.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    @IBAction func tweet(sender: AnyObject) {
+    @objc func tweet() {
         let shareItems = ["  #memoryio", self.lastImage] as [Any]
         let service = NSSharingService(named: NSSharingService.Name.postOnTwitter)
         service?.delegate = self
         service?.perform(withItems: shareItems )
     }
 
-    @IBAction func preferencesAction(sender: AnyObject) {
+    @objc func preferencesAction() {
         self.preferencesWindowController.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 }
-
