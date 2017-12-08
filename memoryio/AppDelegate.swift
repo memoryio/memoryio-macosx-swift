@@ -12,6 +12,7 @@ import MASPreferences
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
     var statusItem: NSStatusItem!
+    var photo = Photo()
 
     var lastImage: NSImage {
         let path = UserDefaults.standard.string(forKey: "memoryio-location")
@@ -35,13 +36,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             let imageView = NSImageView()
             imageView.imageScaling = .scaleProportionallyUpOrDown
 
-            let tweetButton = NSButton(frame: NSMakeRect(0, 0, 77, 32))
-            tweetButton.title = "Tweet"
-            tweetButton.bezelStyle = .rounded
-            tweetButton.setButtonType(.momentaryPushIn)
-            tweetButton.action = #selector(tweet)
-            tweetButton.target = self
-            imageView.addSubview(tweetButton)
+            let shareButton = NSButton(frame: NSMakeRect(0, 0, 77, 32))
+            shareButton.tag = 1
+            shareButton.title = "Share"
+            shareButton.bezelStyle = .rounded
+            shareButton.setButtonType(.momentaryPushIn)
+            shareButton.action = #selector(share)
+            shareButton.sendAction(on: .leftMouseDown)
+            shareButton.target = self
+            imageView.addSubview(shareButton)
 
             _previewWindow = NSWindow(contentRect: NSMakeRect(0, 608, 480, 270),
                                       styleMask: NSWindow.StyleMask([.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView]),
@@ -168,6 +171,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     func applicationWillTerminate(_ aNotification: Notification) {
     }
 
+    func takePhoto(){
+
+        let warmupDelay = UserDefaults.standard.double(forKey: "memoryio-warmup-delay")
+        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+
+        photo.captureStillImageAsynchronously(path: path!, warmupDelay:warmupDelay, completionHandler:{
+            (error, _) -> Void in
+
+            if((error) != nil){
+                self.postNotification(informativeText: "There was a problem taking that shot :(", withActionBoolean: false)
+            }else{
+                self.postNotification(informativeText: "Well, Look at you!", withActionBoolean: true)
+            }
+        })
+    }
+
     @objc func quitAction() {
         NSApp.terminate(self)
     }
@@ -178,6 +197,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     }
 
     @objc func forceAction() {
+        takePhoto()
     }
 
     @objc func forceActionGif() {
@@ -190,11 +210,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    @objc func tweet() {
-        let shareItems = ["  #memoryio", self.lastImage] as [Any]
-        let service = NSSharingService(named: NSSharingService.Name.postOnTwitter)
-        service?.delegate = self
-        service?.perform(withItems: shareItems )
+    @objc func share() {
+        let shareItems = ["#memoryio", self.lastImage] as [Any]
+        let sharingPicker:NSSharingServicePicker = NSSharingServicePicker.init(items: shareItems)
+        sharingPicker.show(relativeTo: (previewWindow.contentView?.viewWithTag(1)?.frame)!, of: previewWindow.contentView!, preferredEdge: NSRectEdge.minY)
     }
 
     @objc func preferencesAction() {

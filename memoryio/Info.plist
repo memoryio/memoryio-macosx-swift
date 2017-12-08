@@ -22,13 +22,11 @@
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017 augmentous. All rights reserved.</string>
-	<key>NSMainNibFile</key>
-	<string></string>
-	<key>NSPrincipalClass</key>
-	<string>NSApplication</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2017 augmentous. All rights reserved.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 </dict>
 </plist>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0367311FDB4E0B00E84164 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367301FDB4E0A00E84164 /* Photo.swift */; };
 		5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */; };
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
 		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B0367301FDB4E0A00E84164 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5B9CE6FF1FD213E500CA8BFE /* memoryio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9CE7041FD213E500CA8BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */,
 				5B9CE7141FD2186E00CA8BFE /* main.swift */,
 				5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */,
+				5B0367301FDB4E0A00E84164 /* Photo.swift */,
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
 				5B9CE7091FD213E500CA8BFE /* Info.plist */,
 				5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */,
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B0367311FDB4E0B00E84164 /* Photo.swift in Sources */,
 				5B9CE71F1FD2242500CA8BFE /* GifPreferencesViewController.swift in Sources */,
 				5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */,
 				5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */,
@@ -364,7 +368,7 @@
 				);
 				INFOPLIST_FILE = memoryio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augmentous.memoryio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -386,7 +390,7 @@
 				);
 				INFOPLIST_FILE = memoryio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.augmentous.memoryio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
