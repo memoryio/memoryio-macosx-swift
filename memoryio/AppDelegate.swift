@@ -13,6 +13,7 @@ import AppKit
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
+    let notificationManager = NotificationManager()
     var statusItem: NSStatusItem!
     var lastURL :URL!
     var photo = Photo()
@@ -165,6 +166,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         }
     }
 
+    func setupNotifications() {
+        notificationManager.subscribePowerNotifications()
+        notificationManager.subscribeDisplayNotifications()
+
+        notificationManager.notificationBlock = {
+             ( messageType, messageArgument) in
+
+            let delay = UserDefaults.standard.double(forKey: "memoryio-photo-delay")
+            let mode = UserDefaults.standard.integer(forKey: "memoryio-mode")
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+                if(mode == 0) {
+                    self.takePhoto()
+                }else{
+                    self.takeMp4()
+                }
+            }
+        }
+    }
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
     }
 
@@ -173,6 +194,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         setNSUserDefaults() // before menu so it has defaults
         setupMenuBar()
         lastURL = loadLast()
+        setupNotifications()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

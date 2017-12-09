@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B0367311FDB4E0B00E84164 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367301FDB4E0A00E84164 /* Photo.swift */; };
 		5B0367331FDB637900E84164 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367321FDB637900E84164 /* Record.swift */; };
+		5B0367361FDB9C0800E84164 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367341FDB9C0800E84164 /* NotificationManager.m */; };
 		5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */; };
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
 		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
@@ -56,6 +57,9 @@
 /* Begin PBXFileReference section */
 		5B0367301FDB4E0A00E84164 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		5B0367321FDB637900E84164 /* Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		5B0367341FDB9C0800E84164 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
+		5B0367351FDB9C0800E84164 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
+		5B0367371FDB9C8900E84164 /* memoryio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "memoryio-Bridging-Header.h"; sourceTree = "<group>"; };
 		5B9CE6FF1FD213E500CA8BFE /* memoryio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9CE7041FD213E500CA8BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,6 +116,9 @@
 				5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */,
 				5B0367321FDB637900E84164 /* Record.swift */,
 				5B0367301FDB4E0A00E84164 /* Photo.swift */,
+				5B0367351FDB9C0800E84164 /* NotificationManager.h */,
+				5B0367341FDB9C0800E84164 /* NotificationManager.m */,
+				5B0367371FDB9C8900E84164 /* memoryio-Bridging-Header.h */,
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
 				5B9CE7091FD213E500CA8BFE /* Info.plist */,
 				5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */,
@@ -241,6 +248,7 @@
 			files = (
 				5B0367311FDB4E0B00E84164 /* Photo.swift in Sources */,
 				5B9CE71F1FD2242500CA8BFE /* Mp4PreferencesViewController.swift in Sources */,
+				5B0367361FDB9C0800E84164 /* NotificationManager.m in Sources */,
 				5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */,
 				5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */,
 				5B0367331FDB637900E84164 /* Record.swift in Sources */,
@@ -376,6 +384,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.augmentous.memoryio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "memoryio/memoryio-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -398,6 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.augmentous.memoryio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "memoryio/memoryio-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
