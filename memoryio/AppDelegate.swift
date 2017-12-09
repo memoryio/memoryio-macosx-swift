@@ -8,28 +8,15 @@
 
 import Cocoa
 import MASPreferences
+import AVFoundation
+import AppKit
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
     var statusItem: NSStatusItem!
+    var lastURL :URL!
     var photo = Photo()
-
-    var lastImage: NSImage {
-        let path = UserDefaults.standard.string(forKey: "memoryio-location")
-
-        let pictures = try? FileManager.default.contentsOfDirectory(at: NSURL.fileURL(withPath: path!), includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles)
-
-        let sortedContent = pictures?.sorted {
-            ( file1: URL, file2: URL) -> Bool in
-            let file1Date = try? file1.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
-            let file2Date = try? file2.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
-
-            return file1Date!.contentModificationDate!.compare(file2Date!.contentModificationDate!) == ComparisonResult.orderedAscending
-        }
-
-        return NSImage(contentsOf:(sortedContent?.last)!)!
-    }
-
+    var recorder = Record()
     var _previewWindow: NSWindow!
     var previewWindow: NSWindow {
         if _previewWindow == nil {
@@ -64,8 +51,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         if _preferencesWindowController == nil {
             let general = GeneralPreferencesViewController()
             let photo = PhotoPreferencesViewController()
-            let gif = GifPreferencesViewController()
-            let controllers = NSArray(objects: general, photo, gif)
+            let mp4 = Mp4PreferencesViewController()
+            let controllers = NSArray(objects: general, photo, mp4)
             let title = NSLocalizedString("Preferences", comment: "Common title for Preferences window")
             _preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers as! [Any], title: title)
         }
@@ -99,11 +86,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         var newItem = NSMenuItem(title: "About", action: #selector(aboutAction), keyEquivalent: "")
         statusMenu.addItem(newItem)
         statusMenu.addItem(NSMenuItem.separator())
-        newItem = NSMenuItem(title: "View Last", action: #selector(preview), keyEquivalent: "")
+        newItem = NSMenuItem(title: "View last", action: #selector(preview), keyEquivalent: "")
         statusMenu.addItem(newItem)
-        newItem = NSMenuItem(title: "Force Photo", action: #selector(forceAction), keyEquivalent: "")
+        newItem = NSMenuItem(title: "Force photo", action: #selector(forceAction), keyEquivalent: "")
         statusMenu.addItem(newItem)
-        newItem = NSMenuItem(title: "Force Gif", action: #selector(forceActionGif), keyEquivalent: "")
+        newItem = NSMenuItem(title: "Force mp4", action: #selector(forceActionMp4), keyEquivalent: "")
         statusMenu.addItem(newItem)
         statusMenu.addItem(NSMenuItem.separator())
         newItem = NSMenuItem(title: "Preferences", action: #selector(preferencesAction), keyEquivalent: "")
@@ -148,14 +135,33 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         if !(UserDefaults.standard.object(forKey: "memoryio-photo-delay") != nil) {
             UserDefaults.standard.set(0.0, forKey: "memoryio-photo-delay")
         }
-        if !(UserDefaults.standard.object(forKey: "memoryio-gif-frame-delay") != nil) {
-            UserDefaults.standard.set(0.20, forKey: "memoryio-gif-frame-delay")
+        if !(UserDefaults.standard.object(forKey: "memoryio-mp4-length") != nil) {
+            UserDefaults.standard.set(5.00, forKey: "memoryio-mp4-length")
         }
-        if !(UserDefaults.standard.object(forKey: "memoryio-gif-frame-count") != nil) {
-            UserDefaults.standard.set(10, forKey: "memoryio-gif-frame-count")
+    }
+
+    func loadLast() -> URL? {
+        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+
+        let pictures = try? FileManager.default.contentsOfDirectory(at: NSURL.fileURL(withPath: path!), includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles)
+
+        let sortedContent = pictures?.sorted {
+            ( file1: URL, file2: URL) -> Bool in
+            let file1Date = try? file1.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
+            let file2Date = try? file2.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
+
+            return file1Date!.contentModificationDate!.compare(file2Date!.contentModificationDate!) == ComparisonResult.orderedAscending
         }
-        if !(UserDefaults.standard.object(forKey: "memoryio-gif-loop-count") != nil) {
-            UserDefaults.standard.set(0, forKey: "memoryio-gif-loop-count")
+
+        return (sortedContent?.last)!
+    }
+
+    func imageForLast() -> NSImage {
+        switch lastURL.pathExtension{
+        case "mp4":
+            return recorder.generateThumbnail(url: lastURL, fromTime: 0)
+        default:
+            return NSImage(contentsOf:lastURL)!
         }
     }
 
@@ -166,9 +172,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         NSUserNotificationCenter.default.delegate = self
         setNSUserDefaults() // before menu so it has defaults
         setupMenuBar()
+        lastURL = loadLast()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
+    }
+
+    func takeMp4(){
+        let length = UserDefaults.standard.double(forKey: "memoryio-mp4-length")
+        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+
+        _ = recorder.captureMp4Asynchronously(path: path!, withLength: length, completionHandler:{
+            (error, url) -> Void in
+
+            if error != nil {
+                self.postNotification(informativeText: "There was a problem taking that shot :(", withActionBoolean: false)
+            } else {
+                self.lastURL = url
+                self.postNotification(informativeText: "Well, Look at you!", withActionBoolean: true)
+            }
+        })
     }
 
     func takePhoto(){
@@ -177,11 +200,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         let path = UserDefaults.standard.string(forKey: "memoryio-location")
 
         photo.captureStillImageAsynchronously(path: path!, warmupDelay:warmupDelay, completionHandler:{
-            (error, _) -> Void in
+            (error, url) -> Void in
 
             if((error) != nil){
                 self.postNotification(informativeText: "There was a problem taking that shot :(", withActionBoolean: false)
             }else{
+                self.lastURL = url
                 self.postNotification(informativeText: "Well, Look at you!", withActionBoolean: true)
             }
         })
@@ -200,18 +224,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         takePhoto()
     }
 
-    @objc func forceActionGif() {
+    @objc func forceActionMp4() {
+        takeMp4()
     }
 
     @objc func preview() {
         let imageView = previewWindow.contentView as! NSImageView
-        imageView.image = self.lastImage
+        imageView.image = imageForLast()
         previewWindow.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
     @objc func share() {
-        let shareItems = ["#memoryio", self.lastImage] as [Any]
+        let shareItems = ["#memoryio", lastURL] as [Any]
         let sharingPicker:NSSharingServicePicker = NSSharingServicePicker.init(items: shareItems)
         sharingPicker.show(relativeTo: (previewWindow.contentView?.viewWithTag(1)?.frame)!, of: previewWindow.contentView!, preferredEdge: NSRectEdge.minY)
     }

@@ -29,7 +29,7 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
     
     enum ModeValue : UInt {
         case Photo = 0
-        case Gif
+        case Mp4
     }
     
     func makeView() -> NSView {
@@ -68,8 +68,8 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         modePull.action = #selector(setMode)
         modePull.target = self
         
-        modePull.addItem(withTitle: "Photo")
-        modePull.addItem(withTitle: "Gif")
+        modePull.addItem(withTitle: "photo")
+        modePull.addItem(withTitle: "mp4")
         modePull.selectItem(at: UserDefaults.standard.integer(forKey: "memoryio-mode"))
 
         view.addSubview(modePull)
