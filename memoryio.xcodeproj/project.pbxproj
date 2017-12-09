@@ -18,8 +18,6 @@
 		5B9CE71F1FD2242500CA8BFE /* Mp4PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71C1FD2242500CA8BFE /* Mp4PreferencesViewController.swift */; };
 		5B9CE7201FD2242500CA8BFE /* PhotoPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */; };
 		5B9CE7271FD2255B00CA8BFE /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */; };
-		5B9CE7281FD2255B00CA8BFE /* MASPreferences.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */; };
-		5B9CE7291FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */; };
 		5B9CE72D1FD225BF00CA8BFE /* MASPreferences.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */; };
 		5B9CE72E1FD225C000CA8BFE /* LaunchAtLogin.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */; };
 		5B9CE7301FD2272100CA8BFE /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */; };
@@ -201,9 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B9CE7291FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM in Resources */,
 				5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */,
-				5B9CE7281FD2255B00CA8BFE /* MASPreferences.framework.dSYM in Resources */,
 				5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -371,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = memoryio/memoryio.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -394,6 +391,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = memoryio/memoryio.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
