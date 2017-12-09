@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import MASPreferences
 import AVFoundation
 import AppKit
 
@@ -50,12 +49,35 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     var _preferencesWindowController: NSWindowController!
     var preferencesWindowController: NSWindowController {
         if _preferencesWindowController == nil {
+
+            let _preferencesWindow = NSWindow(contentRect: NSMakeRect(0, 608, 480, 270),
+                                      styleMask: NSWindow.StyleMask([.titled, .closable, .miniaturizable, .resizable]),
+                                      backing: NSWindow.BackingStoreType.buffered, defer: true)
+            _preferencesWindow.isMovable = true
+            _preferencesWindow.hasShadow = true
+            _preferencesWindow.isReleasedWhenClosed = false
+            _preferencesWindow.aspectRatio = NSMakeSize(480, 270)
+
+            let tabViewController = NSTabViewController()
+
             let general = GeneralPreferencesViewController()
+            tabViewController.addChildViewController(general)
+            let tabView1 = tabViewController.tabViewItem(for: general)
+            tabView1?.label = "General"
+
             let photo = PhotoPreferencesViewController()
+            tabViewController.addChildViewController(photo)
+            let tabView2 = tabViewController.tabViewItem(for: photo)
+            tabView2?.label = "Photo"
+
             let mp4 = Mp4PreferencesViewController()
-            let controllers = NSArray(objects: general, photo, mp4)
-            let title = NSLocalizedString("Preferences", comment: "Common title for Preferences window")
-            _preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers as! [Any], title: title)
+            tabViewController.addChildViewController(mp4)
+            let tabView3 = tabViewController.tabViewItem(for: mp4)
+            tabView3?.label = "Mp4"
+
+            _preferencesWindow.contentViewController = tabViewController
+
+            _preferencesWindowController = NSWindowController(window:_preferencesWindow)
         }
         return _preferencesWindowController
     }
@@ -137,7 +159,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             UserDefaults.standard.set(0.0, forKey: "memoryio-photo-delay")
         }
         if !(UserDefaults.standard.object(forKey: "memoryio-mp4-length") != nil) {
-            UserDefaults.standard.set(5.00, forKey: "memoryio-mp4-length")
+            UserDefaults.standard.set(3.00, forKey: "memoryio-mp4-length")
         }
     }
 
