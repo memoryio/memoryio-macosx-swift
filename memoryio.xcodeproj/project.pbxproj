@@ -17,12 +17,9 @@
 		5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */; };
 		5B9CE71F1FD2242500CA8BFE /* Mp4PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71C1FD2242500CA8BFE /* Mp4PreferencesViewController.swift */; };
 		5B9CE7201FD2242500CA8BFE /* PhotoPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */; };
-		5B9CE7271FD2255B00CA8BFE /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */; };
-		5B9CE72D1FD225BF00CA8BFE /* MASPreferences.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */; };
 		5B9CE72E1FD225C000CA8BFE /* LaunchAtLogin.framework.dSYM in Copy Carthage Symbols */ = {isa = PBXBuildFile; fileRef = 5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */; };
 		5B9CE7301FD2272100CA8BFE /* LaunchAtLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */; };
 		5B9CE7311FD2272100CA8BFE /* LaunchAtLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		5B9CE7341FD2272300CA8BFE /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +29,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				5B9CE72D1FD225BF00CA8BFE /* MASPreferences.framework.dSYM in Copy Carthage Symbols */,
 				5B9CE72E1FD225C000CA8BFE /* LaunchAtLogin.framework.dSYM in Copy Carthage Symbols */,
 			);
 			name = "Copy Carthage Symbols";
@@ -45,7 +41,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				5B9CE7311FD2272100CA8BFE /* LaunchAtLogin.framework in Embed Frameworks */,
-				5B9CE7341FD2272300CA8BFE /* MASPreferences.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,8 +64,6 @@
 		5B9CE71C1FD2242500CA8BFE /* Mp4PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mp4PreferencesViewController.swift; sourceTree = "<group>"; };
 		5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreferencesViewController.swift; sourceTree = "<group>"; };
 		5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LaunchAtLogin.framework; path = Carthage/Build/Mac/LaunchAtLogin.framework; sourceTree = SOURCE_ROOT; };
-		5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = Carthage/Build/Mac/MASPreferences.framework; sourceTree = SOURCE_ROOT; };
-		5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MASPreferences.framework.dSYM; path = Carthage/Build/Mac/MASPreferences.framework.dSYM; sourceTree = SOURCE_ROOT; };
 		5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LaunchAtLogin.framework.dSYM; path = Carthage/Build/Mac/LaunchAtLogin.framework.dSYM; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -79,7 +72,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B9CE7271FD2255B00CA8BFE /* MASPreferences.framework in Frameworks */,
 				5B9CE7301FD2272100CA8BFE /* LaunchAtLogin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,8 +122,6 @@
 			children = (
 				5B9CE7221FD2255B00CA8BFE /* LaunchAtLogin.framework */,
 				5B9CE7251FD2255B00CA8BFE /* LaunchAtLogin.framework.dSYM */,
-				5B9CE7231FD2255B00CA8BFE /* MASPreferences.framework */,
-				5B9CE7241FD2255B00CA8BFE /* MASPreferences.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

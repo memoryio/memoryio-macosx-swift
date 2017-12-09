@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import MASPreferences
 
-class Mp4PreferencesViewController: NSViewController, MASPreferencesViewController {
+class Mp4PreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "mp4"
     var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
 
@@ -25,15 +24,15 @@ class Mp4PreferencesViewController: NSViewController, MASPreferencesViewControll
         dec.maximumFractionDigits = 1
         dec.minimumFractionDigits = 1
 
-        let lengthTextLabel = NSTextField(frame: NSMakeRect(43, 108, 175, 17))
-        lengthTextLabel.stringValue = "mp4 length"
+        let lengthTextLabel = NSTextField(frame: NSMakeRect(130, 108, 150, 17))
+        lengthTextLabel.stringValue = "mp4 length in (s)"
         lengthTextLabel.isBezeled = false
         lengthTextLabel.drawsBackground = false
         lengthTextLabel.isEditable = false
         lengthTextLabel.isSelectable = false
         view.addSubview(lengthTextLabel)
 
-        lengthText = NSTextField(frame: NSMakeRect(234, 105, 96, 22))
+        lengthText = NSTextField(frame: NSMakeRect(310, 108, 54, 22))
         lengthText.action = #selector(lengthDidChange)
         lengthText.target = self
         lengthText.formatter = dec

@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import MASPreferences
 
-class PhotoPreferencesViewController: NSViewController, MASPreferencesViewController {
+class PhotoPreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "Photo"
     var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
 
@@ -25,15 +24,15 @@ class PhotoPreferencesViewController: NSViewController, MASPreferencesViewContro
         dec.maximumFractionDigits = 1
         dec.minimumFractionDigits = 1
 
-        let warmupDelayTextLabel = NSTextField(frame: NSMakeRect(81, 108, 146, 17))
-        warmupDelayTextLabel.stringValue = "Camera Warmup Delay"
+        let warmupDelayTextLabel = NSTextField(frame: NSMakeRect(130, 108, 150, 17))
+        warmupDelayTextLabel.stringValue = "Warmup delay in (s)"
         warmupDelayTextLabel.isBezeled = false
         warmupDelayTextLabel.drawsBackground = false
         warmupDelayTextLabel.isEditable = false
         warmupDelayTextLabel.isSelectable = false
         view.addSubview(warmupDelayTextLabel)
 
-        warmupDelayText = NSTextField(frame: NSMakeRect(252, 105, 54, 22))
+        warmupDelayText = NSTextField(frame: NSMakeRect(310, 108, 54, 22))
         warmupDelayText.action = #selector(warmupDidChange)
         warmupDelayText.target = self
         warmupDelayText.becomeFirstResponder()

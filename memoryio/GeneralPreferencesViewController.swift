@@ -8,9 +8,8 @@
 
 import Foundation
 import LaunchAtLogin
-import MASPreferences
 
-class GeneralPreferencesViewController: NSViewController, MASPreferencesViewController {
+class GeneralPreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "General"
     var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
     
@@ -40,22 +39,22 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         dec.maximumFractionDigits = 1
         dec.minimumFractionDigits = 1
 
-        let locationPullLabel = NSTextField(frame: NSMakeRect(18, 166, 96, 17))
-        locationPullLabel.stringValue = "Save Location"
+        let locationPullLabel = NSTextField(frame: NSMakeRect(90, 166, 150, 17))
+        locationPullLabel.stringValue = "Save location"
         locationPullLabel.isBezeled = false
         locationPullLabel.drawsBackground = false
         locationPullLabel.isEditable = false
         locationPullLabel.isSelectable = false
         view.addSubview(locationPullLabel)
 
-        locationPull = NSPopUpButton(frame: NSMakeRect(165, 161, 174, 26))
+        locationPull = NSPopUpButton(frame: NSMakeRect(270, 166, 174, 22))
         locationPull.bezelStyle = .rounded
         locationPull.action = #selector(setLocation)
         locationPull.target = self
         populateLocation()
         view.addSubview(locationPull)
 
-        let modePullLabel = NSTextField(frame: NSMakeRect(18, 125, 130, 17))
+        let modePullLabel = NSTextField(frame: NSMakeRect(90, 125, 150, 17))
         modePullLabel.stringValue = "Action at lockscreen"
         modePullLabel.isBezeled = false
         modePullLabel.drawsBackground = false
@@ -63,7 +62,7 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
         modePullLabel.isSelectable = false
         view.addSubview(modePullLabel)
 
-        modePull = NSPopUpButton(frame: NSMakeRect(165, 120, 73, 26))
+        modePull = NSPopUpButton(frame: NSMakeRect(270, 125, 73, 22))
         modePull.bezelStyle = .rounded
         modePull.action = #selector(setMode)
         modePull.target = self
@@ -74,15 +73,15 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
 
         view.addSubview(modePull)
 
-        let photoDelayTextLabel = NSTextField(frame: NSMakeRect(18, 81, 120, 17))
-        photoDelayTextLabel.stringValue = "Delay after Startup"
+        let photoDelayTextLabel = NSTextField(frame: NSMakeRect(90, 84, 140, 17))
+        photoDelayTextLabel.stringValue = "Delay after startup (s)"
         photoDelayTextLabel.isBezeled = false
         photoDelayTextLabel.drawsBackground = false
         photoDelayTextLabel.isEditable = false
         photoDelayTextLabel.isSelectable = false
         view.addSubview(photoDelayTextLabel)
 
-        photoDelayText = NSTextField(frame: NSMakeRect(165, 78, 54, 22))
+        photoDelayText = NSTextField(frame: NSMakeRect(270, 84, 54, 22))
         photoDelayText.action = #selector(photoDidChange)
         photoDelayText.target = self
         photoDelayText.becomeFirstResponder()
@@ -91,8 +90,8 @@ class GeneralPreferencesViewController: NSViewController, MASPreferencesViewCont
 
         view.addSubview(photoDelayText)
 
-        startupButton = NSButton(frame: NSMakeRect(165, 44, 112, 18))
-        startupButton.title = "Run at Startup"
+        startupButton = NSButton(frame: NSMakeRect(90, 43, 112, 18))
+        startupButton.title = "Run at startup"
         startupButton.setButtonType(NSButton.ButtonType.switch)
         startupButton.action = #selector(startupAction)
         startupButton.target = self
