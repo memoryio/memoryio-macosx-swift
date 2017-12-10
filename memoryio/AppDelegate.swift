@@ -173,7 +173,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             let file1Date = try? file1.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
             let file2Date = try? file2.resourceValues(forKeys: [.creationDateKey, .contentModificationDateKey])
 
-            return file1Date!.contentModificationDate!.compare(file2Date!.contentModificationDate!) == ComparisonResult.orderedAscending
+            return file1Date!.creationDate!.compare(file2Date!.creationDate!) == ComparisonResult.orderedAscending
         }
 
         return (sortedContent?.last)!
