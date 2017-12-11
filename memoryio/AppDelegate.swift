@@ -13,14 +13,17 @@ import AppKit
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
     let notificationManager = NotificationManager()
-    var statusItem: NSStatusItem!
-    var lastURL :URL!
     var photo = Photo()
     var recorder = Record()
+
+    var statusItem: NSStatusItem!
+    var playerLayer : AVPlayerLayer!
+
     var _previewWindow: NSWindow!
     var previewWindow: NSWindow {
         if _previewWindow == nil {
             let imageView = NSImageView()
+            imageView.wantsLayer=true
             imageView.imageScaling = .scaleProportionallyUpOrDown
 
             let shareButton = NSButton(frame: NSMakeRect(0, 0, 77, 32))
@@ -179,15 +182,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         return (sortedContent?.last)!
     }
 
-    func imageForLast() -> NSImage {
-        switch lastURL.pathExtension{
-        case "mp4":
-            return recorder.generateThumbnail(url: lastURL, fromTime: 0)
-        default:
-            return NSImage(contentsOf:lastURL)!
-        }
-    }
-
     func setupNotifications() {
         notificationManager.subscribePowerNotifications()
         notificationManager.subscribeDisplayNotifications()
@@ -215,7 +209,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         NSUserNotificationCenter.default.delegate = self
         setNSUserDefaults() // before menu so it has defaults
         setupMenuBar()
-        lastURL = loadLast()
         setupNotifications()
     }
 
@@ -232,7 +225,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             if error != nil {
                 self.postNotification(informativeText: "There was a problem taking that shot :(", withActionBoolean: false)
             } else {
-                self.lastURL = url
                 self.postNotification(informativeText: "Well, Look at you!", withActionBoolean: true)
             }
         })
@@ -249,7 +241,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             if((error) != nil){
                 self.postNotification(informativeText: "There was a problem taking that shot :(", withActionBoolean: false)
             }else{
-                self.lastURL = url
                 self.postNotification(informativeText: "Well, Look at you!", withActionBoolean: true)
             }
         })
@@ -273,14 +264,38 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     }
 
     @objc func preview() {
+
         let imageView = previewWindow.contentView as! NSImageView
-        imageView.image = imageForLast()
+
+        //remove any old players
+        if(playerLayer != nil){
+            playerLayer.removeFromSuperlayer()
+        }
+
+        let lasturl = loadLast()
+        switch lasturl?.pathExtension{
+        case "jpg"?:
+            imageView.image = NSImage(contentsOf:lasturl!)!
+            break;
+        case "mp4"?:
+            imageView.image = nil
+            let player = AVPlayer(url: lasturl!)
+            player.play()
+             playerLayer = AVPlayerLayer(player: player)
+            playerLayer.zPosition = -1
+            playerLayer.frame=(imageView.bounds)
+            imageView.layer?.addSublayer(playerLayer)
+            break
+        default:
+            break
+        }
+
         previewWindow.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
     @objc func share() {
-        let shareItems = ["#memoryio", lastURL] as [Any]
+        let shareItems = ["#memoryio", loadLast()!] as [Any]
         let sharingPicker:NSSharingServicePicker = NSSharingServicePicker.init(items: shareItems)
         sharingPicker.show(relativeTo: (previewWindow.contentView?.viewWithTag(1)?.frame)!, of: previewWindow.contentView!, preferredEdge: NSRectEdge.minY)
     }
