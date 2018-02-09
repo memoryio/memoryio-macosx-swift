@@ -10,10 +10,10 @@
 		5B0367311FDB4E0B00E84164 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367301FDB4E0A00E84164 /* Photo.swift */; };
 		5B0367331FDB637900E84164 /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367321FDB637900E84164 /* Record.swift */; };
 		5B0367361FDB9C0800E84164 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0367341FDB9C0800E84164 /* NotificationManager.m */; };
+		5B7D57A0202E5F79007BCF52 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B7D579F202E5F78007BCF52 /* Credits.rtf */; };
 		5B9CE7031FD213E500CA8BFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */; };
 		5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7041FD213E500CA8BFE /* Assets.xcassets */; };
 		5B9CE7151FD2186E00CA8BFE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE7141FD2186E00CA8BFE /* main.swift */; };
-		5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5B9CE7191FD21B4400CA8BFE /* Credits.rtf */; };
 		5B9CE71E1FD2242500CA8BFE /* GeneralPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */; };
 		5B9CE71F1FD2242500CA8BFE /* Mp4PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71C1FD2242500CA8BFE /* Mp4PreferencesViewController.swift */; };
 		5B9CE7201FD2242500CA8BFE /* PhotoPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */; };
@@ -53,13 +53,13 @@
 		5B0367341FDB9C0800E84164 /* NotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		5B0367351FDB9C0800E84164 /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
 		5B0367371FDB9C8900E84164 /* memoryio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "memoryio-Bridging-Header.h"; sourceTree = "<group>"; };
+		5B7D579F202E5F78007BCF52 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		5B9CE6FF1FD213E500CA8BFE /* memoryio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B9CE7021FD213E500CA8BFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B9CE7041FD213E500CA8BFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B9CE7091FD213E500CA8BFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = memoryio.entitlements; sourceTree = "<group>"; };
 		5B9CE7141FD2186E00CA8BFE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		5B9CE7191FD21B4400CA8BFE /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; name = Credits.rtf; path = "../../../memoryio-macosx-swift/memoryio/Credits.rtf"; sourceTree = "<group>"; };
 		5B9CE71B1FD2242400CA8BFE /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		5B9CE71C1FD2242500CA8BFE /* Mp4PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mp4PreferencesViewController.swift; sourceTree = "<group>"; };
 		5B9CE71D1FD2242500CA8BFE /* PhotoPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 				5B9CE7041FD213E500CA8BFE /* Assets.xcassets */,
 				5B9CE7091FD213E500CA8BFE /* Info.plist */,
 				5B9CE70A1FD213E500CA8BFE /* memoryio.entitlements */,
-				5B9CE7191FD21B4400CA8BFE /* Credits.rtf */,
+				5B7D579F202E5F78007BCF52 /* Credits.rtf */,
 			);
 			path = memoryio;
 			sourceTree = "<group>";
@@ -190,7 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B9CE7051FD213E500CA8BFE /* Assets.xcassets in Resources */,
-				5B9CE71A1FD21B4400CA8BFE /* Credits.rtf in Resources */,
+				5B7D57A0202E5F79007BCF52 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
