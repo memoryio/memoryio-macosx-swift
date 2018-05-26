@@ -9,6 +9,7 @@
 import Cocoa
 import AVFoundation
 import AppKit
+import LaunchAtLogin
 
 class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NSUserNotificationCenterDelegate
 {
@@ -148,6 +149,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     }
 
     func setNSUserDefaults() {
+        if !(UserDefaults.standard.object(forKey: "memoryio-launchatlogin") != nil) {
+            LaunchAtLogin.isEnabled = true;
+            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
+        }
         if !(UserDefaults.standard.object(forKey: "memoryio-mode") != nil) {
             UserDefaults.standard.set(0, forKey: "memoryio-mode")
         }

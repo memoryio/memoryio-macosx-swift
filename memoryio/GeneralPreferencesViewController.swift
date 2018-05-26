@@ -95,8 +95,12 @@ class GeneralPreferencesViewController: NSViewController {
         startupButton.setButtonType(NSButton.ButtonType.switch)
         startupButton.action = #selector(startupAction)
         startupButton.target = self
-        if UserDefaults.standard.bool(forKey: "memoryio-launchatlogin") {
+        if LaunchAtLogin.isEnabled {
             startupButton.state = .on
+            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
+        }else {
+            startupButton.state = .off
+            UserDefaults.standard.set(false, forKey: "memoryio-launchatlogin")
         }
         view.addSubview(startupButton)
 
@@ -110,8 +114,10 @@ class GeneralPreferencesViewController: NSViewController {
     @IBAction func startupAction(sender: AnyObject) {
         if sender.state == .on {
             LaunchAtLogin.isEnabled = true
+            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
         } else {
             LaunchAtLogin.isEnabled = false
+            UserDefaults.standard.set(false, forKey: "memoryio-launchatlogin")
         }
     }
     
