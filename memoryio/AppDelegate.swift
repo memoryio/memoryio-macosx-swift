@@ -157,7 +157,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             UserDefaults.standard.set(0, forKey: "memoryio-mode")
         }
         if !(UserDefaults.standard.string(forKey: "memoryio-location") != nil) {
-            let defaultPath = "\(NSHomeDirectory())\("/Pictures/memoryIO/")"
+            let defaultPath = "/Users/\(NSUserName())/Pictures/memoryIO/"
             UserDefaults.standard.set(defaultPath, forKey: "memoryio-location")
         }
         if !(UserDefaults.standard.object(forKey: "memoryio-warmup-delay") != nil) {
