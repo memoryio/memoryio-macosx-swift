@@ -83,6 +83,7 @@ class GeneralPreferencesViewController: NSViewController {
 
         photoDelayText = NSTextField(frame: NSMakeRect(270, 84, 54, 22))
         photoDelayText.action = #selector(photoDidChange)
+        photoDelayText.cell?.sendsActionOnEndEditing = true
         photoDelayText.target = self
         photoDelayText.becomeFirstResponder()
         photoDelayText.formatter = dec
