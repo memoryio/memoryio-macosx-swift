@@ -72,7 +72,7 @@ class GeneralPreferencesViewController: NSViewController {
         
         modePull.addItem(withTitle: "photo")
         modePull.addItem(withTitle: "mp4")
-        modePull.selectItem(at: UserDefaults.standard.integer(forKey: "memoryio-mode"))
+        modePull.selectItem(at: UserDefaults.standard.integer(forKey: "\(Bundle.main.bundleIdentifier!).mode"))
 
         view.addSubview(modePull)
 
@@ -90,7 +90,7 @@ class GeneralPreferencesViewController: NSViewController {
         photoDelayText.target = self
         photoDelayText.becomeFirstResponder()
         photoDelayText.formatter = dec
-        photoDelayText.stringValue = UserDefaults.standard.string(forKey: "memoryio-photo-delay")!
+        photoDelayText.stringValue = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).photoDelay")!
 
         view.addSubview(photoDelayText)
 
@@ -101,10 +101,10 @@ class GeneralPreferencesViewController: NSViewController {
         startupButton.target = self
         if LaunchAtLogin.isEnabled {
             startupButton.state = .on
-            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
+            UserDefaults.standard.set(true, forKey: "\(Bundle.main.bundleIdentifier!).launchAtLogin")
         }else {
             startupButton.state = .off
-            UserDefaults.standard.set(false, forKey: "memoryio-launchatlogin")
+            UserDefaults.standard.set(false, forKey: "\(Bundle.main.bundleIdentifier!).launchAtLogin")
         }
         view.addSubview(startupButton)
 
@@ -118,10 +118,10 @@ class GeneralPreferencesViewController: NSViewController {
     @IBAction func startupAction(sender: AnyObject) {
         if sender.state == .on {
             LaunchAtLogin.isEnabled = true
-            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
+            UserDefaults.standard.set(true, forKey: "\(Bundle.main.bundleIdentifier!).launchAtLogin")
         } else {
             LaunchAtLogin.isEnabled = false
-            UserDefaults.standard.set(false, forKey: "memoryio-launchatlogin")
+            UserDefaults.standard.set(false, forKey: "\(Bundle.main.bundleIdentifier!).launchAtLogin")
         }
     }
     
@@ -138,7 +138,7 @@ class GeneralPreferencesViewController: NSViewController {
             openPanel.begin { (result) -> Void in
                 if(result == NSApplication.ModalResponse.OK){
                     let path = openPanel.url!.path
-                    UserDefaults.standard.set(path + "/", forKey: "memoryio-location")
+                    UserDefaults.standard.set(path + "/", forKey: "\(Bundle.main.bundleIdentifier!).location")
                 }
                 self.populateLocation()
             }
@@ -146,15 +146,15 @@ class GeneralPreferencesViewController: NSViewController {
     }
     
     @IBAction func setMode(sender: NSPopUpButton) {
-        UserDefaults.standard.set(sender.indexOfSelectedItem, forKey: "memoryio-mode")
+        UserDefaults.standard.set(sender.indexOfSelectedItem, forKey: "\(Bundle.main.bundleIdentifier!).mode")
     }
     
     @IBAction func photoDidChange(sender: NSTextField) {
-        UserDefaults.standard.set(sender.floatValue, forKey: "memoryio-photo-delay")
+        UserDefaults.standard.set(sender.floatValue, forKey: "\(Bundle.main.bundleIdentifier!).photoDelay")
     }
     
     func populateLocation() {
-        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+        let path = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).location")
         locationPull.removeAllItems()
         locationPull.addItem(withTitle: path!)
         locationPull.addItem(withTitle: "Other")

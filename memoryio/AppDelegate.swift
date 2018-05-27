@@ -148,31 +148,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         }
     }
 
-    func setNSUserDefaults() {
-        if !(UserDefaults.standard.object(forKey: "memoryio-launchatlogin") != nil) {
-            LaunchAtLogin.isEnabled = true;
-            UserDefaults.standard.set(true, forKey: "memoryio-launchatlogin")
-        }
-        if !(UserDefaults.standard.object(forKey: "memoryio-mode") != nil) {
-            UserDefaults.standard.set(0, forKey: "memoryio-mode")
-        }
-        if !(UserDefaults.standard.string(forKey: "memoryio-location") != nil) {
-            let defaultPath = "/Users/\(NSUserName())/Pictures/memoryIO/"
-            UserDefaults.standard.set(defaultPath, forKey: "memoryio-location")
-        }
-        if !(UserDefaults.standard.object(forKey: "memoryio-warmup-delay") != nil) {
-            UserDefaults.standard.set(2.0, forKey: "memoryio-warmup-delay")
-        }
-        if !(UserDefaults.standard.object(forKey: "memoryio-photo-delay") != nil) {
-            UserDefaults.standard.set(0.0, forKey: "memoryio-photo-delay")
-        }
-        if !(UserDefaults.standard.object(forKey: "memoryio-mp4-length") != nil) {
-            UserDefaults.standard.set(3.00, forKey: "memoryio-mp4-length")
-        }
-    }
-
     func loadLast() -> URL? {
-        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+        let path = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).location")
 
         let pictures = try? FileManager.default.contentsOfDirectory(at: NSURL.fileURL(withPath: path!), includingPropertiesForKeys: [.creationDateKey], options: .skipsHiddenFiles)
 
@@ -194,8 +171,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         notificationManager.notificationBlock = {
              ( messageType, messageArgument) in
 
-            let delay = UserDefaults.standard.double(forKey: "memoryio-photo-delay")
-            let mode = UserDefaults.standard.integer(forKey: "memoryio-mode")
+            let delay = UserDefaults.standard.double(forKey: "\(Bundle.main.bundleIdentifier!).photoDelay")
+            let mode = UserDefaults.standard.integer(forKey: "\(Bundle.main.bundleIdentifier!).mode")
 
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
                 if(mode == 0) {
@@ -212,7 +189,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
 
     func applicationWillFinishLaunching(_ notification:Notification) {
         NSUserNotificationCenter.default.delegate = self
-        setNSUserDefaults() // before menu so it has defaults
+        //before menu so it has defaults
+        //https://github.com/memoryio/memoryio-macosx-swift/issues/3
+        DefaultsImporter.convertDefaults()
         setupMenuBar()
         setupNotifications()
     }
@@ -221,8 +200,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
     }
 
     func takeMp4(){
-        let length = UserDefaults.standard.double(forKey: "memoryio-mp4-length")
-        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+        let length = UserDefaults.standard.double(forKey: "\(Bundle.main.bundleIdentifier!).mp4Length")
+        let path = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).location")
 
         _ = recorder.captureMp4Asynchronously(path: path!, withLength: length, completionHandler:{
             (error, url) -> Void in
@@ -237,8 +216,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
 
     func takePhoto(){
 
-        let warmupDelay = UserDefaults.standard.double(forKey: "memoryio-warmup-delay")
-        let path = UserDefaults.standard.string(forKey: "memoryio-location")
+        let warmupDelay = UserDefaults.standard.double(forKey: "\(Bundle.main.bundleIdentifier!).warmupDelay")
+        let path = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).location")
 
         photo.captureStillImageAsynchronously(path: path!, warmupDelay:warmupDelay, completionHandler:{
             (error, url) -> Void in
