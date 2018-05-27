@@ -21,8 +21,11 @@ class PhotoPreferencesViewController: NSViewController {
 
         let dec = NumberFormatter()
         dec.numberStyle = .decimal
-        dec.maximumFractionDigits = 1
-        dec.minimumFractionDigits = 1
+        dec.maximumFractionDigits = 2
+        dec.minimumFractionDigits = 2
+        dec.minimum = 0
+        dec.maximum = 10
+        dec.allowsFloats = true
 
         let warmupDelayTextLabel = NSTextField(frame: NSMakeRect(130, 108, 150, 17))
         warmupDelayTextLabel.stringValue = "Warmup delay in (s)"

@@ -21,8 +21,11 @@ class Mp4PreferencesViewController: NSViewController {
 
         let dec = NumberFormatter()
         dec.numberStyle = .decimal
-        dec.maximumFractionDigits = 1
-        dec.minimumFractionDigits = 1
+        dec.maximumFractionDigits = 2
+        dec.minimumFractionDigits = 2
+        dec.minimum = 0
+        dec.maximum = 10
+        dec.allowsFloats = true
 
         let lengthTextLabel = NSTextField(frame: NSMakeRect(130, 108, 150, 17))
         lengthTextLabel.stringValue = "mp4 length in (s)"

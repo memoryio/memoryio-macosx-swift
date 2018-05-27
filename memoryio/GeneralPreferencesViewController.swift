@@ -36,8 +36,11 @@ class GeneralPreferencesViewController: NSViewController {
 
         let dec = NumberFormatter()
         dec.numberStyle = .decimal
-        dec.maximumFractionDigits = 1
-        dec.minimumFractionDigits = 1
+        dec.maximumFractionDigits = 2
+        dec.minimumFractionDigits = 2
+        dec.minimum = 0
+        dec.maximum = 10
+        dec.allowsFloats = true
 
         let locationPullLabel = NSTextField(frame: NSMakeRect(90, 166, 150, 17))
         locationPullLabel.stringValue = "Save location"
