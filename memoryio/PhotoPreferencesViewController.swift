@@ -41,7 +41,7 @@ class PhotoPreferencesViewController: NSViewController {
         warmupDelayText.target = self
         warmupDelayText.becomeFirstResponder()
         warmupDelayText.formatter = dec
-        warmupDelayText.stringValue = UserDefaults.standard.string(forKey: "memoryio-warmup-delay")!
+        warmupDelayText.stringValue = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).warmupDelay")!
         view.addSubview(warmupDelayText)
 
         return view
@@ -52,6 +52,6 @@ class PhotoPreferencesViewController: NSViewController {
     }
     
     @IBAction func warmupDidChange(sender: NSTextField) {
-        UserDefaults.standard.set(sender.floatValue, forKey: "memoryio-warmup-delay")
+        UserDefaults.standard.set(sender.floatValue, forKey: "\(Bundle.main.bundleIdentifier!).warmupDelay")
     }
 }

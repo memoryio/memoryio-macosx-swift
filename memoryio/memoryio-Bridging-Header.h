@@ -10,5 +10,6 @@
 #define memoryio_Bridging_Header_h
 
 #import "NotificationManager.h"
+#import "DefaultsImporter.h"
 
 #endif /* memoryio_Bridging_Header_h */

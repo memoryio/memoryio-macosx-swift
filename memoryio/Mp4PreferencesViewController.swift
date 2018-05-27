@@ -40,7 +40,7 @@ class Mp4PreferencesViewController: NSViewController {
         lengthText.cell?.sendsActionOnEndEditing = true
         lengthText.target = self
         lengthText.formatter = dec
-        lengthText.stringValue = UserDefaults.standard.string(forKey: "memoryio-mp4-length")!
+        lengthText.stringValue = UserDefaults.standard.string(forKey: "\(Bundle.main.bundleIdentifier!).mp4Length")!
         view.addSubview(lengthText)
 
         return view
@@ -51,6 +51,6 @@ class Mp4PreferencesViewController: NSViewController {
     }
 
     @IBAction func lengthDidChange(sender: NSTextField) {
-        UserDefaults.standard.set(sender.intValue, forKey: "memoryio-mp4-length")
+        UserDefaults.standard.set(sender.intValue, forKey: "\(Bundle.main.bundleIdentifier!).mp4Length")
     }
 }
