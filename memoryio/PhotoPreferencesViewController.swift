@@ -34,6 +34,7 @@ class PhotoPreferencesViewController: NSViewController {
 
         warmupDelayText = NSTextField(frame: NSMakeRect(310, 108, 54, 22))
         warmupDelayText.action = #selector(warmupDidChange)
+        warmupDelayText.cell?.sendsActionOnEndEditing = true
         warmupDelayText.target = self
         warmupDelayText.becomeFirstResponder()
         warmupDelayText.formatter = dec
