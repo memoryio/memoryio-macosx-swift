@@ -10,7 +10,7 @@ import Foundation
 
 class Mp4PreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "mp4"
-    var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
+    var toolbarItemImage: NSImage? = NSImage(named: NSImage.preferencesGeneralName)!
 
     var viewIdentifier: String = "Mp4Preferences"
 

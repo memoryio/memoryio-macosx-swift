@@ -34,9 +34,9 @@ class Record: NSObject, AVCaptureFileOutputRecordingDelegate
         let asset :AVAsset = AVAsset(url: url)
         let assetImgGenerate : AVAssetImageGenerator = AVAssetImageGenerator(asset: asset)
         assetImgGenerate.appliesPreferredTrackTransform = true
-        assetImgGenerate.requestedTimeToleranceAfter = kCMTimeZero;
-        assetImgGenerate.requestedTimeToleranceBefore = kCMTimeZero;
-        let time        : CMTime = CMTimeMakeWithSeconds(fromTime, 600)
+        assetImgGenerate.requestedTimeToleranceAfter = CMTime.zero;
+        assetImgGenerate.requestedTimeToleranceBefore = CMTime.zero;
+        let time        : CMTime = CMTimeMakeWithSeconds(fromTime, preferredTimescale: 600)
         let img        : CGImage = try! assetImgGenerate.copyCGImage(at: time, actualTime: nil)
         let image: NSImage = NSImage(cgImage: img, size: NSZeroSize)
         return image

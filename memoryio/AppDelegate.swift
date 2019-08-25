@@ -65,17 +65,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
             let tabViewController = NSTabViewController()
 
             let general = GeneralPreferencesViewController()
-            tabViewController.addChildViewController(general)
+            tabViewController.addChild(general)
             let tabView1 = tabViewController.tabViewItem(for: general)
             tabView1?.label = "General"
 
             let photo = PhotoPreferencesViewController()
-            tabViewController.addChildViewController(photo)
+            tabViewController.addChild(photo)
             let tabView2 = tabViewController.tabViewItem(for: photo)
             tabView2?.label = "Photo"
 
             let mp4 = Mp4PreferencesViewController()
-            tabViewController.addChildViewController(mp4)
+            tabViewController.addChild(mp4)
             let tabView3 = tabViewController.tabViewItem(for: mp4)
             tabView3?.label = "Mp4"
 
@@ -108,7 +108,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSSharingServiceDelegate, NS
         statusItem.isEnabled = true
         statusItem.toolTip = "memoryIO"
         statusItem.target = self
-        statusItem.image = NSImage(named: NSImage.Name(rawValue: "statusIcon"))
+        statusItem.image = NSImage(named: "statusIcon")
         let statusMenu = NSMenu()
         var newItem = NSMenuItem(title: "About", action: #selector(aboutAction), keyEquivalent: "")
         statusMenu.addItem(newItem)

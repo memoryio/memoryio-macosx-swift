@@ -11,7 +11,7 @@ import LaunchAtLogin
 
 class GeneralPreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "General"
-    var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
+    var toolbarItemImage: NSImage? = NSImage(named: NSImage.preferencesGeneralName)!
     
     var viewIdentifier: String = "GeneralPreferences"
 

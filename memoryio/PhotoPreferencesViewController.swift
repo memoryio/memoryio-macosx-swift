@@ -10,7 +10,7 @@ import Foundation
 
 class PhotoPreferencesViewController: NSViewController {
     var toolbarItemLabel: String? = "Photo"
-    var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.preferencesGeneral)!
+    var toolbarItemImage: NSImage? = NSImage(named: NSImage.preferencesGeneralName)!
 
     var viewIdentifier: String = "PhotoPreferences"
 
