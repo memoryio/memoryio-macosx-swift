@@ -91,7 +91,9 @@ class Photo: NSObject
                 var error2: NSError?
 
                 let url = self.makeDateURL(path: path, ext: "jpg", date:date)
+
                 do{
+                    try FileManager.default.createDirectory(at:NSURL.fileURL(withPath: path), withIntermediateDirectories:true, attributes: nil);
                     try imageData.write(to: url )
                 }catch {
                     error2 = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey : "Could not write image data"])
